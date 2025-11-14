@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Home | Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- HEADER DA PÁGINA DE REGISTROS -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-gray mx-2" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray mx-2" href="{% url 'users:cadastro' %}">Cadastrar</a>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn btn-primary btn-rounded" href="{% url 'users:login' %}">
+                                Login
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FORMULÁRIO RESPONSÁVEL POR REGISTRAR UMA PESSOA DENTRO DO SISTEMA -->
+    <div class="d-flex justify-content-center align-items-center" style="height: 85vh;">
+        <div class="card shadow p-4" style="width: 380px;">
+
+            <h3 class="text-center mb-4">Criar Conta</h3>
+
+            <form action="{% url 'users:cadastro' %}" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" name="username" class="form-control" placeholder="Digite um nome de usuário"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" class="form-control" placeholder="Seu e-mail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" class="form-control" placeholder="Crie uma senha" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-3">
+                    Cadastrar
+                </button>
+
+                <p class="text-center mt-3 mb-0">
+                    Já tem uma conta?
+                    <a href="{% url 'users:login' %}">Entrar</a>
+                </p>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
