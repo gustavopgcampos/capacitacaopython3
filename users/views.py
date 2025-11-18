@@ -16,7 +16,9 @@ def register (request):
         emailExists = User.objects.filter(email=email).first()
     
         if emailExists: 
-            return HttpResponse('email já cadastrado')
+            return render(request, 'login.html', {
+                'login_error': 'E-mail já está em uso.'
+            })
         
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
@@ -38,4 +40,6 @@ def login (request):
 
             return redirect('biblioteca:home')
         else: 
-            return HttpResponse('Email ou senha inválidos')
+            return render(request, 'login.html', {
+                'login_error': 'Email ou Senha Inválidos.'
+            })
