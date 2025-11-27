@@ -11,65 +11,50 @@
 
 <body>
 
-    <!-- HEADER DA PÁGINA DE LOGIN -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <!-- responsável por adicionar o header padronizado -->
+    {% include 'partials/header.html' %}
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto align-items-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-gray mx-2" href="{% url 'home' %}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-gray mx-2" href="{% url 'users:cadastro' %}">Cadastrar</a>
-                        </li>
-                        <li class="nav-item ml-lg-3">
-                            <a class="btn btn-primary btn-rounded" href="{% url 'users:login' %}">
-                                Login
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- formulário responsável pelo login de um usuário dentro do sistema -->
+    <div class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://i.pinimg.com/736x/36/a0/85/36a085785eabcc6add04d35e8c97be37.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;">
+        <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+            <div class="card shadow p-4" style="width: 350px;">
+
+                <h3 class="text-center mb-4">Entrar</h3>
+
+                <form action="{% url 'users:login' %}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" name="username" class="form-control" placeholder="Digite seu usuário"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" class="form-control" placeholder="Digite sua senha"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Entrar</button>
+
+                    <p class="text-center mt-3">
+                        Não tem uma conta?
+                        <a href="{% url 'users:cadastro' %}">Cadastre-se</a>
+                    </p>
+
+                </form>
             </div>
-        </nav>
-    </header>
-
-    <!-- FORMULÁRIO PARA LOGIN DE USUÁRIO -->
-    <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
-        <div class="card shadow p-4" style="width: 350px;">
-
-            <h3 class="text-center mb-4">Entrar</h3>
-
-            <form action="{% url 'users:login' %}" method="POST">
-                {% csrf_token %}
-
-                <div class="form-group">
-                    <label for="username">Usuário</label>
-                    <input type="text" name="username" class="form-control" placeholder="Digite seu usuário" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" name="password" class="form-control" placeholder="Digite sua senha" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block mt-3">Entrar</button>
-
-                <p class="text-center mt-3">
-                    Não tem uma conta?
-                    <a href="{% url 'users:cadastro' %}">Cadastre-se</a>
-                </p>
-
-            </form>
         </div>
     </div>
 
-    <!-- MODAL ERRO DE SENHA -->
+    <!-- responsável por adicionar o footer padronizado -->
+    {% include 'partials/footer.html' %}
+
+    <!-- modal responsável por retornar o erro de senha inválida -->
     <div class="modal fade" id="loginErrorModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -89,9 +74,8 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
 
+    <!-- responsável por mostrar o modal de error caso login_error seja true-->
     {% if login_error %}
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -100,6 +84,8 @@
     </script>
     {% endif %}
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
 
 </body>
 

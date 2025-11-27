@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.contrib.auth.decorators import login_required
 
+# responsável pela lógica do registro de novos usuários e redirect para a home do sistema estando já logado
 def register (request):
 
     if request.method == "GET":
@@ -23,8 +24,13 @@ def register (request):
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
 
-        return HttpResponse('Usuário cadastrado com sucesso')
+        user_auth = authenticate(username=username, password=senha)
+        if user_auth: 
+            login_django(request, user_auth)
 
+        return redirect('biblioteca:home')
+
+# responsável pela lógica do login do usuário, retorna um modal de erro caso o as informações estejam erradas
 def login (request): 
 
     if request.method == "GET": 

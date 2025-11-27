@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from datetime import timedelta
 from .models import Livro, Emprestimo
-from django.db.models import Q
 
 @login_required(login_url='/auth/login')
 def biblioteca (request):
