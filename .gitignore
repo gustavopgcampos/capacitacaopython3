@@ -1,6 +1,6 @@
 venv/
 .env/
-mainProject/settings.py
+/mainProject/settings.py
 
 __pycache__/
 *.pyc
