@@ -47,5 +47,5 @@ def login (request):
             return redirect('biblioteca:home')
         else: 
             return render(request, 'login.html', {
-                'login_error': 'Email ou Senha Inválidos.'
+                'login_error': 'Usuário ou Senha Inválidos.'
             })
