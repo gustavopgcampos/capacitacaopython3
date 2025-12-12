@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import timedelta
 
+# modelo responsável pelo livro dentro do banco de dados
 class Livro (models.Model):
     titulo = models.CharField(max_length=150)
     autor = models.CharField(max_length=100)
@@ -12,7 +13,8 @@ class Livro (models.Model):
 
     def __str__(self):
         return self.titulo
-    
+
+# modelo responsável por um empréstimo dentro do banco de dados
 class Emprestimo (models.Model):
     data_retirada = models.DateTimeField(auto_now_add=True)
     data_previsao = models.DateTimeField(editable=False)

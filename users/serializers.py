@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
+# responsável por transformar os dados do banco dos usuários para JSON
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 

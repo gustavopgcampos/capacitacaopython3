@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# urls principais dentro do app biblioteca
 app_name = 'biblioteca'
 
 urlpatterns = [

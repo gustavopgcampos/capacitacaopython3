@@ -6,6 +6,7 @@ from biblioteca.api import LivroViewSet, EmprestimoViewSet
 from users.api import UsuarioViewSet
 from biblioteca.api_views import DevolucaoViewSet
 
+# responsável por definir as urls padrões do projeto e da API
 router = routers.DefaultRouter()
 router.register(r'livros', LivroViewSet)
 router.register(r'emprestimos', EmprestimoViewSet)

@@ -2,6 +2,7 @@ from django.urls import path, include
 from django.contrib.auth.views import LogoutView
 from . import views
 
+# define as url padrões para os usuários
 app_name = 'users'
 
 urlpatterns = [

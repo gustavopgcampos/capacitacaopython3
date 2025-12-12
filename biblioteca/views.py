@@ -4,6 +4,7 @@ from django.utils import timezone
 from datetime import timedelta
 from .models import Livro, Emprestimo
 
+# lógica responsável por listar todos os empréstimos
 @login_required(login_url='/auth/login')
 def biblioteca (request):
 
@@ -13,6 +14,7 @@ def biblioteca (request):
         'emprestimos': emprestimos
     })
 
+# lógica responsável por criar uma listagem de todos os livros
 @login_required(login_url='/auth/login')
 def listar_livros (request): 
     queryString = request.GET.get('q')
@@ -26,6 +28,7 @@ def listar_livros (request):
 
     return render(request, 'biblioteca/listar_livros.html', {'livros': livros})
 
+# lógica responsável por criar um empréstimo no 'frontend'
 @login_required(login_url='/auth/login')
 def criar_emprestimo (request):
     livros_disponiveis = Livro.objects.filter(status=1)
@@ -61,6 +64,7 @@ def criar_emprestimo (request):
         'livros': livros_disponiveis
     })
 
+# lógica responsável pela devolução de um livro
 @login_required(login_url='/auth/login')
 def devolver_livro (request, id):
     emprestimo = Emprestimo.objects.get(id=id)
