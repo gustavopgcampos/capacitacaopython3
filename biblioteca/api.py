@@ -35,6 +35,14 @@ class EmprestimoViewSet(viewsets.ModelViewSet):
     queryset = Emprestimo.objects.all()
     serializer_class = EmprestimoSerializer
 
+    def destroy (self, request, *args, **kwargs): 
+        emprestimo = self.get_object()
+        emprestimo.delete()
+
+        return Response({
+            "mensagem": "Empréstimo excluído com sucesso"
+        }, status=status.HTTP_200_OK)
+
     @action(detail=True, methods=['post'])
     def devolucao(self, request, pk=None):
         emprestimo = self.get_object()
