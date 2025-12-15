@@ -1,14 +1,9 @@
 venv/
 .env/
-/mainProject/settings.py
 
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-django.db.backends.mysql
-
-*settings*.py
 
 */migrations/*.pyc
