@@ -9,3 +9,9 @@ INSERT INTO livros (titulo, autor, ano, isbn, status) VALUES
 ('1984', 'George Orwell', 1949, '9780451524935', 1),
 ('Dom Casmurro', 'Machado de Assis', 1899, '9788520921226', 1),
 ('O Hobbit', 'J. R. R. Tolkien', 1937, '9780547928227', 1);
+
+-> para rodar as migrações: 
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - python manage.py migrate user
+    - python manage.py migrate biblioteca 
