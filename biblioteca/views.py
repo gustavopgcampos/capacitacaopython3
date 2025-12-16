@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.utils import timezone
 from datetime import timedelta
 from .models import Livro, Emprestimo
